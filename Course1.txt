@@ -1,0 +1,33 @@
+WEEK 1
+
+LESSON 2
+Machine learning algorithms:
+- supervised learning (Course 1 and Course 2)
+- unsupervised learning (Course 3)
+- recommender systems
+- reinforcement learning
+some applications: spam filtering, speech recognition, machine translation, online advertising, self-driving car, visual inspection*
+supervised learning -> learns from being given "right answers" by regression (predict a number, infinitely many possible otputs) or classification (predict categories, small number of possible outputs)
+
+LESSON 3
+Linear regression
+(x, y) = (input, output) variables
+m -> number of training examples
+feature variables -> model function -> prediction (estimated y)
+model function: f(x) = wx + b (linear example)
+our objective is to find a w and b that results in a estimated y close to y for all (x, y)
+Cost function: J(w,b) = (1/2m)*(Soma de 1->m de (ý - y)²)
+ý is a f(x)
+the goal is minimize the cost function
+
+LESSON 4
+gradient descent algorithm: 
+tmp_w = w - @*dJ(w,b)/dw, wich alfa(@) is called the learning rate (0 < @ < 1)
+tmp_b = b - @*dJ(w,b)/db
+w = tmp_w
+b = tmp_b
+
+
+WEEK 2
+
+LESSON 1
