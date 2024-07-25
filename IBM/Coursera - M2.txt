@@ -1,0 +1,8 @@
+Regression:
+how to find the best fit?
+ý = w*x + b
+MSE = (Soma de 1 a n de (yi - ýi)²)/n
+-> Para achar os coeficientes/parâmetros podemos usar o método de mínimos quadrados
+
+Model Evaluation Approaches:
+ 

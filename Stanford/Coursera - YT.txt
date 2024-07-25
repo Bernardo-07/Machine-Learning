@@ -31,3 +31,32 @@ b = tmp_b
 WEEK 2
 
 LESSON 1
+multiple linear regression = using vectors
+example:
+w = np.array([10, 20, -30])
+b = 40
+x = np.array([1, 2, 3])
+without vectorization:
+f=0
+for j in range(0, n):
+	f = f + w[j] * x[j]
+f = f + b
+with vectorization:
+f = np.dot(w, x) + b
+
+LESSON 2
+Rescaled the features = speed up gradient descent to find the blobal minimum
+feature scaling, ex:
+300 < a < 2000 and 0 < b < 5
+ascaled = a/2000(max) and bscaled = b/5(max)
+0.15 < ascaled < 1 and 0 < bscaled < 1
+mean normalization?
+z-score normalization?
+
+
+WEEK 3
+
+LESSON 1
+logistic regression (sigmoid function)
+returns the probability that y is equal to 1 given x and with parameters W and B
+decision boundary when z = w*x +b = 0 k

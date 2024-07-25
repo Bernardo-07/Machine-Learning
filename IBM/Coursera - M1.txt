@@ -1,0 +1,27 @@
+Artificial Intelligence (AI): A inteligência artificial (IA) é um campo da ciência da computação que se dedica ao estudo e ao desenvolvimento de máquinas e programas computacionais capazes de reproduzir o comportamento humano na tomada de decisões e na realização de tarefas simples.
+
+Machine Learning:  é o subconjunto da inteligência artificial (IA) que se concentra na construção de sistemas que aprendem, ou melhoram o desempenho, com base nos dados que consomem.
+
+Artificial Neural Network: ou rede neural artificial é um modelo computacional capaz de aplicar o machine learning. Redes neurais artificiais geralmente são apresentadas como sistemas de neurônios interconectados, que podem computar valores de entradas (features).
+
+Deep Learning: é um subconjunto de machine learning, que é essencialmente uma rede neural artificial com três ou mais camadas (hidden layers). 
+
+Tipos ou modelos de Machine Learning:
+- Supervisionado: No método de aprendizado supervisionado, o sistema é programado ou treinado a partir de um conjunto de dados pré-definidos ou rotulados. Munido com uma série de informações, o programa é capaz de tomar suas próprias decisões quando recebe um conjunto de novos dados.
+- Não Supervisionado
+- Por Reforço
+
+Técnicas de Machine Learning:
+- Regression (Supervised)
+- Classification (Supervised)
+- Clustering (Unsupervised)
+
+Bibliotecas do Python para Machine Learning:
+- Pandas (data structures)
+- NumPy (arrays)
+- Matplotlib (plotting graphs)
+- SciPy (statistics and optimization)
+- SciKit-Learn 
+
+
+
