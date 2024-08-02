@@ -11,3 +11,18 @@ Model Evaluation Approaches:
 
 RMSE = Raiz quadrada do MSE
 *assistir aulas de matemática sobre metodo de minimos quadrados
+
+*assistir videoaula de como usar o pandas e o skcit-learn
+
+ý = O0 + O1*x1 + O2*x2 +...
+ý = Ot*X, onde Ot é um vetor peso da equação de regressão (paramteros) e X é a feature set
+
+Estimating multiple linear regression parameters:
+- Least Square Method:
+is a linear algebra operation
+takes a long time for large datasets(over 10K rows)
+- Optimization algorithm:
+uses gradient descent
+proper approach if you have a very large dataset
+
+-> adding too many independent variables without any theoretical justification may result in an overfit model.
