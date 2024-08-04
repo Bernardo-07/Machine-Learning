@@ -14,3 +14,6 @@ confusion matrix
 - Log loss
 perfomance of a classifier where the predicted output is a probability value between 0 and 1
 ao contráior das outras the logloss accuracy é melhor quando está mais próximo de zero.
+
+decision trees and regression trees?
+labs in th folder
