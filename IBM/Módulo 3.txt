@@ -1,0 +1,16 @@
+Classification:
+determines the class label for an unlabeled test case
+
+Classification algorithms in machine learning:
+- K-Nearest Neighbours?
+
+Evaluation Metrics in Classification:
+- Jaccard index
+the size of the intersection divided by the size of the union of two label sets, (actual y and predicted ý) vai de 0 a 1
+
+- F1-score
+confusion matrix
+
+- Log loss
+perfomance of a classifier where the predicted output is a probability value between 0 and 1
+ao contráior das outras the logloss accuracy é melhor quando está mais próximo de zero.
