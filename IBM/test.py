@@ -1,103 +1,68 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import pylab as pl
 import numpy as np
-from sklearn import linear_model
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 import csv
 
-'''data = 'C:\\Users\Bernardo Duarte\Documents\Machine-Learning\IBM\FuelConsumptionCo2.csv'
+data = 'C:\\Users\Bernardo Duarte\Documents\Machine-Learning\IBM\FuelConsumptionCo2.csv'
 
 eng_size = []
 co2_emiss = []
-fuel_consum = []
 
-with open(data, mode='r') as file: #abre o arquivo no modo leitura
-    file_csv = csv.reader(file) #cria uma variável para receber a leitura do arquivo
-    next(file_csv) #pula o cabeçalho
+with open(data, mode='r') as file:  # abre o arquivo no modo leitura
+    # cria uma variável para receber a leitura do arquivo
+    file_csv = csv.reader(file)
+    next(file_csv)  # pula o cabeçalho
 
-    for line in file_csv: #itera sobre cada linha da variavel
+    for line in file_csv:  # itera sobre cada linha da variavel
         eng_size.append(float(line[4]))
-        fuel_consum.append(float(line[10]))
         co2_emiss.append(float(line[12]))
-        #extrai os dados transformanddo em float
-
-# Gráfico de dispersão FUELCONSUMPTION_COMB vs CO2EMISSIONS
-plt.scatter(fuel_consum, co2_emiss, color='blue')
-plt.xlabel("FUELCONSUMPTION_COMB")
-plt.ylabel("Emission")
-plt.show()
+        # extrai os dados transformanddo em float
 
 # Gráfico de dispersão ENGINESIZE vs CO2EMISSIONS
+plt.figure(1)
 plt.scatter(eng_size, co2_emiss, color='blue')
 plt.xlabel("Engine size")
 plt.ylabel("Emission")
-plt.show()'''
-
-path="C:\\Users\Bernardo Duarte\Documents\Machine-Learning\IBM\FuelConsumptionCo2.csv"
-# Leitura do arquivo CSV
-df = pd.read_csv(path)
-
-# Visualizar as primeiras linhas do dataset
-print(df.head())
-
-# Resumo dos dados
-print(df.describe())
-
-# Seleção de colunas específicas
-cdf = df[['ENGINESIZE', 'CYLINDERS', 'FUELCONSUMPTION_COMB', 'CO2EMISSIONS']]
-print(cdf.head(9))
-
-# Visualização dos dados
-viz = cdf[['CYLINDERS', 'ENGINESIZE', 'CO2EMISSIONS', 'FUELCONSUMPTION_COMB']]
-viz.hist()
 plt.show()
 
-# Gráfico de dispersão FUELCONSUMPTION_COMB vs CO2EMISSIONS
-plt.scatter(cdf.FUELCONSUMPTION_COMB, cdf.CO2EMISSIONS, color='blue')
-plt.xlabel("FUELCONSUMPTION_COMB")
-plt.ylabel("Emission")
-plt.show()
+eng_size_np = np.array(eng_size).reshape(-1, 1)  # matriz 2D
+co2_emiss_np = np.array(co2_emiss)  # array 1D
 
-# Gráfico de dispersão ENGINESIZE vs CO2EMISSIONS
-plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
+X_train, X_test, y_train, y_test = train_test_split(
+    eng_size_np, co2_emiss_np, test_size=0.2)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+plt.figure(2)
+plt.scatter(eng_size, co2_emiss, color='blue')
+plt.scatter(X_train, y_train, color='red')
 plt.xlabel("Engine size")
 plt.ylabel("Emission")
 plt.show()
 
-# Divisão do conjunto de dados em treinamento e teste
-msk = np.random.rand(len(df)) < 0.8
-train = cdf[msk]
-test = cdf[~msk]
+a = model.coef_[0]
+b = model.intercept_
 
-# Visualização dos dados de treinamento
-plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
+# Imprime os coeficientes
+print('Coeficiente Angular: ', a)
+print('Coeficiente Linear: ', b)
+
+# Plota a linha de regressão
+plt.figure(3)
+plt.scatter(eng_size, co2_emiss, color='blue')
+plt.plot(X_train, a * np.array(X_train) + b, color='red')
 plt.xlabel("Engine size")
 plt.ylabel("Emission")
-plt.show()
-
-# Criação do modelo de regressão linear
-regr = linear_model.LinearRegression()
-train_x = np.asanyarray(train[['ENGINESIZE']])
-train_y = np.asanyarray(train[['CO2EMISSIONS']])
-regr.fit(train_x, train_y)
-
-# Coeficientes e intercepto do modelo
-print('Coefficients: ', regr.coef_)
-print('Intercept: ', regr.intercept_)
-
-# Visualização do modelo ajustado
-plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
-plt.plot(train_x, regr.coef_[0][0] * train_x + regr.intercept_[0], '-r')
-plt.xlabel("Engine size")
-plt.ylabel("Emission")
+plt.title("Linear Regression: Engine size vs Emission")
 plt.show()
 
 # Avaliação do modelo
-test_x = np.asanyarray(test[['ENGINESIZE']])
-test_y = np.asanyarray(test[['CO2EMISSIONS']])
-test_y_ = regr.predict(test_x)
+y_predict = model.predict(X_test)
 
-print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
-print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
-print("R2-score: %.2f" % r2_score(test_y, test_y_))
+print("Mean absolute error: %.2f" % np.mean(np.absolute(y_predict - y_test)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((y_predict - y_test) ** 2))
+print("R2-score: %.2f" % r2_score(y_test, y_predict))
