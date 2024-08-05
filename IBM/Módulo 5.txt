@@ -1,0 +1,6 @@
+Clustering
+Clustering means finding clusters in a dataset, unsupervised. A cluster is a group of data points or objects in a dataset that are similar to other objects in the group, and dissimilar to datapoints in other clusters.
+
+Segmentation?
+
+K-Means?
