@@ -1,0 +1,24 @@
+Logistic Regression 
+uses this method:
+- if your observed data is binary and your features are continuos
+- if you need probalistics results
+- when you need a linear decision
+- if you need to understand the impact of a feature
+
+logistic x linear regression
+the logistic regression use a sigmoid function
+sigmoid function: função hiperbólica simétrica 1/(1+ e^(-Ot*X))
+
+The training process:
+*Initialize O (teta)
+*Calculate ý = sigmoid(Ot*X) for a customer
+*Compare the output ý with actual output of costumer y, and record it as error
+*Calculate the error for all customers
+*Go back to step 2
+
+Change the weight -> reduce the cost
+cost function:
+Cost(ý, y) = (sigmoid(Ot*X) - y)²
+derivate to find the minimum is difficult
+then we must use gradient descent
+
